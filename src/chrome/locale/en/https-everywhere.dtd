@@ -50,6 +50,13 @@
 <!ENTITY https-everywhere.report.caption "Automatic bug reporting preferences">
 <!ENTITY https-everywhere.report.advanced_show "Advanced Options">
 <!ENTITY https-everywhere.report.advanced_hide "Hide Advanced Options">
+
+<!ENTITY https-everywhere.report.popup_title "HTTPS Everywhere Bug Reporting">
+<!ENTITY https-everywhere.report.popup_paragraph "You disabled an HTTPS Everywhere rule. Would you like to automatically submit bug reports?">
+<!ENTITY https-everywhere.report.popup_yes "Yes">
+<!ENTITY https-everywhere.report.popup_no "No">
+<!ENTITY https-everywhere.report.popup_details "Details and Privacy Information">
+
 <!ENTITY https-everywhere.popup.title "HTTPS Everywhere 4.0development.11 notification">
 <!ENTITY https-everywhere.popup.paragraph1 "Oops. You were using the stable version of HTTPS Everywhere, but we might have accidentally upgraded you to the development version in our last release.">
 <!ENTITY https-everywhere.popup.paragraph2 "Would you like to go back to stable?">

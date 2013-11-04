@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://https-everywhere/locale/https-everywhere.dtd">
+
+<dialog id="https-everywhere-report-popup"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    title="&https-everywhere.report.popup_title;"
+    persist="screenX screenY width height"
+    style="height:80%; resize:both;"
+    buttons="accept,cancel,extra1"
+    height="400"
+	width="300"
+	buttonlabelaccept="&https-everywhere.report.popup_yes;"
+	buttonlabelcancel="&https-everywhere.report.popup_no;"
+	buttonlabelextra1="&https-everywhere.report.popup_details;"
+	ondialogaccept=""
+    ondialogcancel="self.close()"
+    ondialogextra1="" >
+	
+    <dialogheader id="dialog-header" title="&https-everywhere.report.popup_title;"/>
+    <description>&https-everywhere.report.popup_paragraph;</description>
+</dialog>

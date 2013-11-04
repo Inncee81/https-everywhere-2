@@ -232,22 +232,33 @@ function toggle_rule(rule_id) {
   var GITID = rs.GITCommitID;
   rs.toggle();
 
+  // prep bug reporting logic
   var prefs = HTTPSEverywhere.get_prefs();
   var report = prefs.getBoolPref("report_disabled_rules");
   var tor_report = prefs.getBoolPref("report_disabled_rules_tor_only");
-
-  var aWin = CC['@mozilla.org/appshell/window-mediator;1']
-	  .getService(CI.nsIWindowMediator)
-	  .getMostRecentWindow('navigator:browser');
+  var report_popup_shown = prefs.getBoolPref("report_popup_shown");
+  
   var torbutton_avail = ssl_observatory.proxy_test_successful;
   HTTPSEverywhere.log(INFO, 'Proxy test returned: '+torbutton_avail);  
-  if (report && !rs.active) {
-    if (!tor_report || torbutton_avail) {
-      aWin.openDialog("chrome://https-everywhere/content/report-disable.xul", 
- 		    rs.xmlName, "chrome,centerscreen",
-		    {xmlName: rs.xmlName, GITCommitID: GITID});
-    }
+
+  var aWin = CC['@mozilla.org/appshell/window-mediator;1']
+    .getService(CI.nsIWindowMediator)
+    .getMostRecentWindow('navigator:browser');
+
+  // if reporting is disabled and the popup has never been shown, show it
+  if(!report_popup_shown && !report && !rs.active) {
+    aWin.openDialog("chrome://https-everywhere/content/report-popup.xul", 
+      rs.xmlName, "chrome,centerscreen",
+      {xmlName: rs.xmlName, GITCommitID: GITID});
+
+    prefs.setBoolPref("report_popup_shown", true);
   }
+
+  // report the ruleset change
+  if (report && (!tor_report || torbutton_avail)) {
+    // todo: implement this
+  }
+
   var domWin = content.document.defaultView.top;
   /*if (domWin instanceof CI.nsIDOMWindow) {
     var alist = HTTPSEverywhere.getExpando(domWin,"applicable_rules", null);
